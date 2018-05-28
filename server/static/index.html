@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Flat HTML5/CSS3 Login Form</title>
+    <link rel="stylesheet" href="css/style.css"> 
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+	<script type="text/javascript">//<![CDATA[ 
+	$(window).load(function(){
+	$('.form-control').on('focus blur', function (e) {
+		$(this).parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
+	}).trigger('blur');
+	});//]]>  ​
+	</script>	
+  </head>
+  <body>
+    <div class="login-page">
+		<div class="form">
+			<form id="girisyap" class="register-form">
+				<div class="yarim form-group">
+					<label id="fnamelab" class="control-label" for="inputNormal">First Name</label>
+					<input type="text" id="firstname" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+				</div>
+				<div class="yarim sn form-group">
+					<label class="control-label" for="inputNormal">Last Name</label>
+					<input type="text" id="lastname" value="" class="bp-suggestions form-control" cols="50" rows="10"></input>
+				</div>
+				<div class="form-group">
+					<label id="RegEmailLab" class="control-label" for="inputNormal">Email</label>
+					<input type="text" id="reg-email" class="bp-suggestions form-control" cols="50" rows="10"></input>
+				</div>
+				<div class="form-group">
+					<label id="RegPassLab" class="control-label" for="inputNormal">Password</label>
+					<input type="password" id="reg-password" value="" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+				</div>	
+				<button class="register">create</button>
+				<p class="message">Already registered? <a href="#">Sign In</a></p>
+			</form>
+			<form id="girisyap" class="login-form">
+				<div class="form-group">
+    				<label id="LogEmailLab" class="control-label" for="inputNormal">Email</label>
+    				<input type="text" id="email" class="form-control" cols="50" rows="10"></input>
+				</div>
+				<div class="form-group">
+    				<label id="LogPassLab" class="control-label" for="inputNormal">Password</label>
+    				<input type="password" id="password" value="" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+				</div>
+				<button class="login">login</button>
+				<p class="message">Not registered? <a href="#">Create an account</a></p>
+			</form>
+		</div>
+	</div>
+<div id="taskForm" class="form" style="display:none">
+	<form id="girisyap">
+		<div class="form-group">
+			<label class="control-label" for="inputNormal">Name</label>
+			<input value="" id="name" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+		</div>
+	</form>
+	<button style="width: 45%; float: left;" id="saveHero">Save</button>
+	<button style="width: 45%; background: red;" id="cancelHero">Cancel</button>
+</div>
+<div id="demo" class="task" style="display:none">
+	<button id="newHero">New Hero</button>
+	<div class="table-responsive-vertical shadow-z-1">
+	<!-- Table starts here -->
+	<table id="table" class="table table-hover table-mc-light-blue">
+		<thead>
+			<tr>
+				<th>Hero</th>
+				<th>Level</th>
+				<th>Talents</th>
+				<th>Keyholes</th>
+			</tr>
+		</thead>
+		<tbody>
+        
+		</tbody>
+    </table>
+	</div>
+</div>
+<div id="myModal" class="modal">
+	<div class="form" style="width:80%; max-width:600px; margin:15% auto;">
+		<form id="girisyap">
+			<h2 id="talentName">Some text in the Modal..<h2>
+			<input id="newDescription" class="bp-suggestions form-control" cols="50" rows="10" ></input>
+			<button style="width: 45%; float: left; margin-top: 20px;" id="saveEdit" >Save</button>
+			<button style="width: 45%; background: red; margin-top: 20px;" id="cancelEdit" onclick="closeModal()">Cancel</button>
+		</form>
+	</div>
+</div>
+<script src="js/jquery-ui.min.js"></script>
+    <script src="js/index.js"></script>
+<script>
+	$(function() {
+
+		  // Initially hide toggleable content
+
+		  // Click handler on entire table
+		$("table").click(function(event) {
+
+			  // No bubbling up
+			event.stopPropagation();
+
+			var $target = $(event.target);
+
+			  // Open and close the appropriate thing
+			if ( $target.closest("td").attr("colspan") > 1 ) {
+				//$target.closest("tr").find("td").toggle()
+				//$target.toggle();
+			} else {
+				//$target.closest("tr").next().find("p").slideToggle();
+				$target.closest("tr").next().find("td").toggle();	
+			}                    
+		});
+	});
+</script>
+  </body>
+</html>
